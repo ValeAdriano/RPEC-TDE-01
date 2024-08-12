@@ -1,19 +1,18 @@
 public class Pilha {
 
-    private static int tamanhoMaximo;
-    private static int topo;
-    private static int[] pilha;
+    private int tamanhoMaximo;
+    private int topo;
+    private int[] pilha;
 
-    public Pilha (int tamanho) {
+    public Pilha(int tamanho) {
         this.tamanhoMaximo = tamanho;
         this.pilha = new int[tamanhoMaximo];
-        this.topo = -1; // Pilha comeca vazia ent o topo e -1
-
+        this.topo = -1; // Pilha começa vazia, então topo é -1
     }
 
-    public static void push(int elemento) {
+    public void push(int elemento) {
         if (topo == tamanhoMaximo - 1) {
-            System.out.println("Tá cheio já carai! ");
+            System.out.println("A pilha está cheia!");
         } else {
             pilha[++topo] = elemento;
         }
@@ -21,37 +20,41 @@ public class Pilha {
 
     public int pop() {
         if (topo == -1) {
-            //Verifica se tem algm na pilha
-            System.out.println("Tá vazia já carai! ");
-
+            System.out.println("A pilha está vazia!");
+            return -1; // Indicando erro ao desempilhar
         } else {
             return pilha[topo--];
-
         }
-        return 0;
     }
 
     public boolean isEmpty() {
-        if (topo == -1) {
-            System.out.println("A pilha tá vazia! ");
-
-            return true;
-        } else {
-            System.out.println("A pilha não está vazia! ");
-
-            return false;
-        }
-
-
+        return topo == -1;
     }
 
     public boolean isFull() {
-        if (topo == tamanhoMaximo) {
-            System.out.println("A pilhas tá cheia! ");
-            return true;
+        return topo == tamanhoMaximo - 1;
+    }
+
+    // Método para retornar o elemento no topo da pilha
+    public int topo() {
+        if (topo == -1) {
+            System.out.println("A pilha está vazia!");
+            return -1; // Indicando que a pilha está vazia
         } else {
-            System.out.println("A pilha não está cheia! ");
-            return false;
+            return pilha[topo];
+        }
+    }
+
+    // Método para imprimir todos os elementos da pilha
+    public void mostrarPilha() {
+        if (topo == -1) {
+            System.out.println("A pilha está vazia!");
+        } else {
+            System.out.print("Pilha: ");
+            for (int i = 0; i <= topo; i++) {
+                System.out.print(pilha[i] + " ");
+            }
+            System.out.println();
         }
     }
 }

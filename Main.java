@@ -1,23 +1,25 @@
 public class Main {
 
-
-
-    public static void main () {
-
+    public static void main(String[] args) {
         Pilha pilha = new Pilha(5);
 
-        Pilha.push(1);
-        Pilha.push(2);
-        Pilha.push(3);
-        Pilha.push(4);
-        Pilha.push(5);
+        // Adicionando elementos na pilha
+        pilha.push(1);
+        pilha.push(2);
+        pilha.push(3);
+        pilha.push(4);
+        pilha.push(5);
 
-        System.out.println("Topo da pilha: " + pilha.topo());
+        // Mostrando a pilha antes de remover um elemento
+        System.out.println("Pilha antes de remover um elemento:");
+        pilha.mostrarPilha();
 
-        // Verificando se a pilha está vazia
-        System.out.println("Pilha está vazia? " + pilha.isEmpty()); // Deve imprimir false
+        // Removendo um elemento do topo da pilha
+        int removido = pilha.pop();
+        System.out.println("Elemento removido: " + removido);
+
+        // Mostrando a pilha após remover um elemento
+        System.out.println("Pilha após remover um elemento:");
+        pilha.mostrarPilha();
     }
-
-
-
 }
